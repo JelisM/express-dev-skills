@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+
+<form action="/books/<%= book.id %>?_method=PUT" method="POST" autocomplete="off">
+    <label>Book edit</label>
+    <input type="text" name="book" value="<%= book.book %>">
+    <label>Read Status</label>
+    <input type="checkbox" name="read" <%= book.read ? 'read' : '' %> >
+    <button type="submit">Edit Book</button>
+</form>
+  
+
+<%- include('../partials/footer') %>

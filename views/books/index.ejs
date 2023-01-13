@@ -1,23 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Express Books</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-</head>
-<body>
-    <h1>Books</h1>
+<%- include('../partials/header') %>
+    <h3>Books as of <%= time %></h3>
     <ul>
       <% books.forEach(function(b) { %>
         <li>
-          <a href="/books/<%=b.id %>"><%= b.book %></a>
-          <%= b.book %>
+          <form action="/books/<%= b.id %>?_method=DELETE"
+            class="delete-form" method="POST">
+            <button type="submit">X</button>
+          </form>
+          <a href="/books/<%=b.id %>">
+            <%= b.book %>
+          </a>
+        
             - 
           <%= b.read ? 'read' : 'not read yet' %>
         </li>
       <% }); %>
     </ul>
-</body>
-</html>
+    <a href="/books/new">Add a Book</a>
+    <%- include('../partials/footer') %>

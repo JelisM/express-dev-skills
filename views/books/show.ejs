@@ -1,3 +1,7 @@
-<body>
+   <%- include('../partials/header') %>
+
     <h3><%= book.book %></h3>
-    <h3>Read: <%= book.read ? 'Yes' : 'No' %></h3>
+    <h3>Have you read this boook yet? <%= book.read ? 'Yes' : 'No' %></h3>
+    <a href="/books/<%= book.id %>/edit">Edit reading Status</a>
+    
+    <%- include('../partials/footer') %>

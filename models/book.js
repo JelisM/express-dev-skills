@@ -9,6 +9,9 @@ const books = [
   module.exports = {
     getAll,
     getOne,
+    create,
+    deleteOne,
+    updateOne,
   };
   
   function getAll() {
@@ -19,3 +22,26 @@ const books = [
     return books.find(book => book.id === id);
 
   }
+  function create(book) {
+    //Add the id
+    book.id = Date.now() % 100000;
+    book.read = false;
+    books.push(book);
+  }
+
+function deleteOne(id) {
+  id = parseInt(id)
+  const idx = books.findIndex(book => book.id === id)
+  books.splice(idx, 1)
+}
+  
+function updateOne(formData, id) {
+  id = parseInt(id)
+  const book = books.find(book => book.id === id)
+  book.book = formData.book
+  if(formData.read) {
+      book.read = true
+  } else {
+      book.read = false
+  }
+}
